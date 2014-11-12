@@ -8,4 +8,6 @@ def index(request):
 	context_dict ={}
 	return render_to_response('product_finder/index.html',context_dict,context)
 def request_page(request):
-	return HttpResponse("Request page <a href='/product_finder/'>Go back</a>")
+	context= RequestContext(request)
+	context_dict ={}
+	return render_to_response('product_finder/request_page.html',context_dict,context)
