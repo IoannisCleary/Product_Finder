@@ -2,11 +2,12 @@ from django.conf.urls import patterns, include, url
 from product_finder import views
 
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
 		url(r'^product_finder/',include('product_finder.urls')),
+		url(r'^admin/',include(admin.site.urls)),
     # Examples:
     # url(r'^$', 'productfinder.views.home', name='home'),
     # url(r'^productfinder/', include('productfinder.foo.urls')),

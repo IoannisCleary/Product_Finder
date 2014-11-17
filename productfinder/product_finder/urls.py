@@ -1,10 +1,6 @@
 from django.conf.urls import patterns, include, url
 from product_finder import views
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
-
 urlpatterns = patterns('',
 		url(r'^$',views.index,name='index'),
 		url(r'^request_page',views.request_page,name='request_page'),
