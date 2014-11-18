@@ -3,7 +3,8 @@ from product_finder import views
 
 urlpatterns = patterns('',
 		url(r'^$',views.index,name='index'),
-		url(r'^request_page',views.request_page,name='request_page'),
+		url(r'^category/(?P<category_type_url>\w+)/$',views.category,name='category'),
+		url(r'^category/(?P<category_type_url>\w+)/(?P<request_productName_url>\w+)/$',views.request,name='request'),
     # Examples:
     # url(r'^$', 'productfinder.views.home', name='home'),
     # url(r'^productfinder/', include('productfinder.foo.urls')),

@@ -1,8 +1,8 @@
 import os
 def populate():
-    food = add_category(type = "Food & Drinks")
-    health = add_category(type = "Health & Beauty")
-    entertainment = add_category (type = "Home & Entertainment")
+    food = add_category(type = "Food and Drinks")
+    health = add_category(type = "Health and Beauty")
+    entertainment = add_category (type = "Home and Entertainment")
     pet = add_category (type = "Pets")
     other = add_category (type = "Other")
 

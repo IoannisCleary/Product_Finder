@@ -7,7 +7,19 @@
 
     <body>
 		 <img src="{% static "logo_small.png" %}" alt="Website logo" /><br />
-		  <h1>Welcome to Product Finder</h1><br />
+		  <h2>Welcome to Product Finder</h2><br />
+		  
+		  <h3>Categories</h3>
+			{% if categories %}
+				<ul>
+					{% for category in categories %}
+						<li><a href="/product_finder/category/{{ category.url }}">{{ category.type }}</a></li>
+					{% endfor %}
+				</ul>
+			{% else %}
+            <strong>There are no categories present.</strong>
+			{% endif %}
+		  		  
       Go to the <a href='/product_finder/request_page'>Request Page</a>
     </body>
 

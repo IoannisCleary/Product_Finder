@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Product Finder</title>
+    </head>
+
+    <body>
+        <h1>{{ category_type }}</h1>
+        {% if category %}
+            {% if requests %}
+            <ul>
+                {% for request in requests %}
+                <li><a href="{{ request.url }}">Looking for {{ request.product_quantity }} x {{ request.product_brand }} {{ request.product_name }}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <strong>No requests currently in category.</strong>
+            {% endif %}
+        {% else %}
+            The specified category {{ category_type }} does not exist!
+        {% endif %}
+    </body>
+</html>
