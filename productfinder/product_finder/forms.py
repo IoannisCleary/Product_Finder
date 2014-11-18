@@ -1,5 +1,6 @@
 from django import forms
-from product_finder.models import Request,Category
+from product_finder.models import Request,Category, UserProfile
+from django.contrib.auth.models import User
 
 class RequestForm(forms.ModelForm):
 	requester = forms.CharField(widget=forms.HiddenInput(),required=False)
@@ -13,3 +14,16 @@ class RequestForm(forms.ModelForm):
 	class Meta:
 		model = Request
 		fields = ('product_name', 'product_brand', 'product_quantity', 'area_local', 'area_online',)
+
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+    username = forms.CharField()
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password')
+
+class UserProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ('name', 'phone', 'city', 'country')

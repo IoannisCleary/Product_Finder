@@ -1,4 +1,5 @@
 import os
+
 def populate():
     food = add_category(type = "Food and Drinks")
     health = add_category(type = "Health and Beauty")
@@ -20,8 +21,9 @@ def add_category(type):
 	cat = Category.objects.get_or_create(type=type)[0]
 	return cat
 def add_requester(username,name,phone,city,country):
-	usr = User.objects.get_or_create(username=username,name=name,phone=phone,city=city,country=country)[0]
-	return usr
+    usr = User.objects.get_or_create(username=username)[0]
+    usrprofile = UserProfile.objects.get_or_create(user = usr,name=name,phone=phone,city=city,country=country)[0]
+    return usrprofile
 def add_request(requester,category,product_name,product_brand,product_quantity):
 	rqst = Request.objects.get_or_create(requester=requester,category=category,product_name=product_name,product_brand=product_brand,product_quantity=product_quantity)[0]
 	return rqst
@@ -33,5 +35,8 @@ def add_response(text,helpful,request):
 if __name__ == '__main__':
     print "Starting Product Finder population script..."
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'productfinder.settings')
-    from product_finder.models import Request,Response,User,Category
+    from django.contrib.auth.models import User
+    from product_finder.models import Request,Response,UserProfile,Category
+    import django
+    django.setup()
     populate()

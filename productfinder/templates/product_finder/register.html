@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Product Finder</title>
+    </head>
+
+    <body>
+        <h1>Register</h1>
+
+        {% if registered %}
+        <strong>thank you for registering!</strong>
+        <a href="/product_finder/">Return to the homepage.</a><br />
+        {% else %}
+        <strong>register here!</strong><br />
+
+        <form id="user_form" method="post" action="/product_finder/register/"
+                enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+
+            {{ user_form.as_p }}
+            {{ profile_form.as_p }}
+            <input type="submit" name="submit" value="Register" />
+        </form>
+        {% endif %}
+    </body>
+</html>
