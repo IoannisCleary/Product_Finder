@@ -7,6 +7,7 @@
     <body>
         <h1>{{ category_type }}</h1>
         {% if category %}
+		<a href="/product_finder/category/{{ category_type_url }}/add_request/">Create a Request</a>
             {% if requests %}
             <ul>
                 {% for request in requests %}
@@ -19,5 +20,8 @@
         {% else %}
             The specified category {{ category_type }} does not exist!
         {% endif %}
+			<br />
+			<br />
+		 <a href='/product_finder/'>Go to Homepage</a>
     </body>
 </html>

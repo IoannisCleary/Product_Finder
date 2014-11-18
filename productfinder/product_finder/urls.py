@@ -4,6 +4,7 @@ from product_finder import views
 urlpatterns = patterns('',
 		url(r'^$',views.index,name='index'),
 		url(r'^category/(?P<category_type_url>\w+)/$',views.category,name='category'),
+		url(r'^category/(?P<category_type_url>\w+)/add_request/$',views.add_request,name='add_request'),
 		url(r'^category/(?P<category_type_url>\w+)/(?P<request_productName_url>\w+)/$',views.request,name='request'),
     # Examples:
     # url(r'^$', 'productfinder.views.home', name='home'),

@@ -2,7 +2,8 @@
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from product_finder.models import Category,Request
+from product_finder.models import Category,Request,User
+from product_finder.forms import RequestForm
 
 def index(request):
 	context = RequestContext(request)
@@ -18,7 +19,7 @@ def index(request):
 def category(request,category_type_url):
 	context = RequestContext(request)
 	category_type = category_type_url.replace('_', ' ')
-	context_dict = {'category_type': category_type}
+	context_dict = {'category_type': category_type,'category_type_url': category_type_url}
 	try:
 		category = Category.objects.get(type = category_type)
 		requests = Request.objects.filter(category = category)
@@ -30,13 +31,36 @@ def category(request,category_type_url):
 		request.url = request.product_brand.replace(' ','_').replace('-','_ff_')+'_123_'+request.product_name.replace(' ','_').replace('-','_ff_')
 		
 	return render_to_response('product_finder/category.html',context_dict,context)
-	
+def add_request(request, category_type_url):
+	context = RequestContext(request)
+	category_type = category_type_url.replace('_', ' ')
+  
+	if request.method == 'POST':
+		form = RequestForm(request.POST)
+		
+		if form.is_valid():
+			rqst = form.save(commit=False)
+			try:
+				cat = Category.objects.get(type = category_type)
+				rqst.category = cat
+			except Category.DoesNotExist:
+				pass
+			rqst.requester=User.objects.get( username = 'BilboLOTR69')
+			rqst.save()
+			return index(request)
+		else:   
+			print form.errors
+	else:
+		form = RequestForm()
+	return render_to_response('product_finder/add_request.html', {'category_type_url': category_type_url,'category_type': category_type,'form': form}, context)
+
 def request(request,category_type_url,request_productName_url):
 	context = RequestContext(request)
 	pbrand = request_productName_url.split('_123_')
 	pB = pbrand[0].replace('_ff_','-').replace('_',' ')
 	pName = pbrand[1].replace('_ff_','-').replace('_',' ')
 	category_type = category_type_url.replace('_', ' ')
+	print category_type_url
 	context_dict = {'category_type': category_type}
 	try:
 		category = Category.objects.get(type = category_type)
