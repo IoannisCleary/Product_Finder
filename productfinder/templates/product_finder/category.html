@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Product Finder</title>
-    </head>
+{% extends 'product_finder/base.html' %}
 
-    <body>
+{% block title %} Category : {{ category_type }}{% endblock %}
+
 	
-		{% if user.is_authenticated %}
-                <a href="/product_finder/logout/">Logout</a>
-            {% else %}
-                    <a href="/product_finder/register/">Register</a><br/>
-                    <a href="/product_finder/login/">Login</a>
-            {% endif %}
-		<br />
-        <h1>{{ category_type }}</h1>
+{% block body_block %}
+		<h1> {{ category_type }} </h1>
         {% if category %}
 		{% if user.is_authenticated %}
 		<a href="/product_finder/category/{{ category_type_url }}/add_request/">Create a Request</a>
@@ -30,8 +21,4 @@
         {% else %}
             The specified category {{ category_type }} does not exist!
         {% endif %}
-			<br />
-			<br />
-		 <a href='/product_finder/'>Go to Homepage</a>
-    </body>
-</html>
+{% endblock %}

@@ -1,17 +1,8 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Product Finder: Request</title>
-    </head>
+{% extends 'product_finder/base.html' %}
+{% block title %} Request {% endblock %}
+  
 
-    <body>
-		{% if user.is_authenticated %}
-                <a href="/product_finder/logout/">Logout</a>
-            {% else %}
-                    <a href="/product_finder/register/">Register</a><br/>
-                    <a href="/product_finder/login/">Login</a>
-            {% endif %}
-		<br />
+{% block body_block %}
         <h1>Request Page</h1>
 		{{ requester }} is looking for :<br />
 		<br />
@@ -22,9 +13,4 @@
 		Local stores : {{ local }}
 		<br />
 		On-line stores: {{ online }}
-		<br />
-		<br />
-     <a href='/product_finder/'>Go to Homepage</a>
-    </body>
-
-</html>
+{% endblock %}

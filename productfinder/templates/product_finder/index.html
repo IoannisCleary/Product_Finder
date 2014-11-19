@@ -1,20 +1,12 @@
-<!DOCTYPE html>
+{% extends 'product_finder/base.html' %}
+{% block title %} Index {% endblock %}
+{% block body_block %}
 {% load static %}
-<html>
-    <head>
-        <title>Product Finder</title>
-    </head>
-
-    <body>
 		 <img src="{% static "logo_small.png" %}" alt="Website logo" /><br />
-		  <h2>Welcome to Product Finder</h2><br />
+		  <h2>Product Finder</h2><br />
 
             {% if user.is_authenticated %}
-                Hello {{ user.username }}!<br />
-                <a href="/product_finder/logout/">Logout</a>
-            {% else %}
-                    <a href="/product_finder/register/">Register</a><br/>
-                    <a href="/product_finder/login/">Login</a>
+                Welcome back {{ user.username }}!<br />
             {% endif %}
 
 
@@ -29,6 +21,4 @@
             <strong>There are no categories present.</strong>
 			{% endif %}
 
-    </body>
-
-</html>
+{% endblock %}
