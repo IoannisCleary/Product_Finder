@@ -48,7 +48,7 @@ def add_request(request, category_type_url):
 				rqst.category = cat
 			except Category.DoesNotExist:
 				pass
-			usr = User.objects.get( username = 'BilboLOTR69')
+			usr = User.objects.get( username = request.user.username)
 			rqst.requester= UserProfile.objects.get( user = usr)
 			rqst.save()
 			return index(request)
