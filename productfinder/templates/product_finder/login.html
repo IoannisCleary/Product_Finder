@@ -2,7 +2,7 @@
 {% block title %}Log - In{% endblock %}
 {% block body_block %}
     <body>
-        <h3>Login to Product Finder</h3>
+        <h3>Login page</h3>
 		<div class="well">
         <form id="login_form" method="post" action="/product_finder/login/">
             {% csrf_token %}
@@ -11,7 +11,7 @@
             Password: <input type="password" name="password" value="" size="50" />
             <br />
 
-            <input type="submit" value="submit" />
+            <input type="submit" value="Log in" class="btn btn-primary"/>
         </form>
 		</div>
 
