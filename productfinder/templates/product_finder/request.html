@@ -5,6 +5,13 @@
     </head>
 
     <body>
+		{% if user.is_authenticated %}
+                <a href="/product_finder/logout/">Logout</a>
+            {% else %}
+                    <a href="/product_finder/register/">Register</a><br/>
+                    <a href="/product_finder/login/">Login</a>
+            {% endif %}
+		<br />
         <h1>Request Page</h1>
 		{{ requester }} is looking for :<br />
 		<br />

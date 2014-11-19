@@ -37,7 +37,7 @@ def category(request,category_type_url):
 def add_request(request, category_type_url):
 	context = RequestContext(request)
 	category_type = category_type_url.replace('_', ' ')
-
+	print request.user
 	if request.method == 'POST':
 		form = RequestForm(request.POST)
 
