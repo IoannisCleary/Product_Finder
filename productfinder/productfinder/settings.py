@@ -133,6 +133,7 @@ INSTALLED_APPS = (
 	'product_finder',
     # Uncomment the next line to enable the admin:
      'django.contrib.admin',
+	 'bootstrapform',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

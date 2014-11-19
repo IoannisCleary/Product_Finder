@@ -3,14 +3,26 @@
   
 
 {% block body_block %}
-        <h1>Request Page</h1>
-		{{ requester }} is looking for :<br />
+	
+        <h2>Request Page</h2>
+		<div class="well">
+		<p><b>{{ requester }}</b> is looking for this product :<br /></p>
+	
+		<span class="label label-info" style="margin-left:10px">Name : {{ name }}</span><br />
+		<span class="label label-info" style="margin-left:10px">Brand : {{ brand }}</span><br />
+		<span class="label label-inverse" style="margin-left:10px">Quantity : {{ quantity }}</span><br />
 		<br />
-		Name : {{ name }}<br />
-		Brand : {{ brand }}<br />
-		Quantity : {{ quantity }}<br />
-		<br />
-		Local stores : {{ local }}
-		<br />
-		On-line stores: {{ online }}
+		Available at:<br/>
+		{% if local %}
+		<span class="label label-success" style="margin-left:10px">+ Local stores</span>
+		{% else %}
+		<span class="label label-important" style="margin-left:10px">- Local stores</span>
+		{% endif %}
+		{% if online %}
+		<span class="label label-success" style="margin-left:10px">+ On-line stores</span>
+		{% else %}
+		<span class="label label-important" style="margin-left:10px">- On-line stores</span>
+		{% endif %}
+		
+	</div>
 {% endblock %}

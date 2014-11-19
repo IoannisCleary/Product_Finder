@@ -1,8 +1,9 @@
 {% extends 'product_finder/base.html' %}
 {% block title %} Create a Request {% endblock %}
 {% block body_block %}
-		<h1>{{ category_type }} Request Page</h1>
+		<h2>{{ category_type }} Request Page</h3>
 		{% if user.is_authenticated %}
+		<div class="well">
         <form id="request_form" method="post" action="/product_finder/category/{{ category_type_url }}/add_request/">
 
             {% csrf_token %}
@@ -16,10 +17,11 @@
                 {{ field }}
 				<br />
             {% endfor %}
-
-            <input type="submit" name="submit" value="Submit request" />
+			<br />
+            <input type="submit" name="submit" value="Post request" class="btn btn-primary" />
         </form>
 		 {% else %}
                   Unable to do this while not being logged in.
         {% endif %}
+		</div>
 {% endblock %}

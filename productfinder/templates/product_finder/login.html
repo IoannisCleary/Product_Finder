@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <!-- Is anyone getting tired of repeatedly entering the header over and over?? -->
-        <title>Product Finder</title>
-    </head>
-
+{% extends 'product_finder/base.html' %}
+{% block title %}Log - In{% endblock %}
+{% block body_block %}
     <body>
-        <h1>Login to Rango</h1>
-
+        <h3>Login to Product Finder</h3>
+		<div class="well">
         <form id="login_form" method="post" action="/product_finder/login/">
             {% csrf_token %}
             Username: <input type="text" name="username" value="" size="50" />
@@ -17,6 +13,6 @@
 
             <input type="submit" value="submit" />
         </form>
+		</div>
 
-    </body>
-</html>
+{% endblock %}

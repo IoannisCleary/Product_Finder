@@ -1,24 +1,27 @@
 {% extends 'product_finder/base.html' %}
-{% block title %} Index {% endblock %}
+{% block title %} Home {% endblock %}
 {% block body_block %}
 {% load static %}
-		 <img src="{% static "logo_small.png" %}" alt="Website logo" /><br />
-		  <h2>Product Finder</h2><br />
-
+	
+		<!--<img src="{% static "logo_small.png" %}" alt="Website logo" /><br /> -->
+		 
+		 <a class="brand" href="/product_finder/"><h2>Product Finder</h2></a>
+		  <div class="well">
             {% if user.is_authenticated %}
-                Welcome back {{ user.username }}!<br />
+                Welcome back <b>{{ user.username }}</b>!<br />
             {% endif %}
-
-
-		  <h3>Categories</h3>
+		  <h3><b>Categories</b></h3>
+		  
 			{% if categories %}
-				<ul>
+			<div class="btn-group btn-group-vertical btn-block">
 					{% for category in categories %}
-						<li><a href="/product_finder/category/{{ category.url }}">{{ category.type }}</a></li>
+					<a href="/product_finder/category/{{ category.url }}" class="btn btn-primary" role="button">{{ category.type }}</a>
 					{% endfor %}
-				</ul>
+			</div>
 			{% else %}
             <strong>There are no categories present.</strong>
 			{% endif %}
+			
+			</div>
 
 {% endblock %}
