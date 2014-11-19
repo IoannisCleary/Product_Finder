@@ -2,7 +2,7 @@
 {% block title %} Create a Request {% endblock %}
 {% block body_block %}
 		<h1>{{ category_type }} Request Page</h1>
-
+		{% if user.is_authenticated %}
         <form id="request_form" method="post" action="/product_finder/category/{{ category_type_url }}/add_request/">
 
             {% csrf_token %}
@@ -19,4 +19,7 @@
 
             <input type="submit" name="submit" value="Submit request" />
         </form>
+		 {% else %}
+                  Unable to do this while not logged in.
+        {% endif %}
 {% endblock %}
