@@ -8,6 +8,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
 		url(r'^product_finder/',include('product_finder.urls')),
 		url(r'^admin/',include(admin.site.urls)),
+		url(r'^comments/', include('django.contrib.comments.urls')),
     # Examples:
     # url(r'^$', 'productfinder.views.home', name='home'),
     # url(r'^productfinder/', include('productfinder.foo.urls')),

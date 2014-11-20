@@ -65,10 +65,12 @@ def request(request,category_type_url,request_productName_url):
 	pName = pbrand[1].replace('_ff_','-').replace('_',' ')
 	category_type = category_type_url.replace('_', ' ')
 	print category_type_url
-	context_dict = {'category_type': category_type}
+	url = "/product_finder/category/" + category_type_url + "/" + request_productName_url 
+	context_dict = {'category_type': category_type, 'url':url}
 	try:
 		category = Category.objects.get(type = category_type)
 		request = Request.objects.filter(category = category, product_name = pName, product_brand = pB)
+		context_dict['request'] = request[0]
 		context_dict['requester'] = request[0].requester
 		context_dict['name'] = request[0].product_name
 		context_dict['brand'] = request[0].product_brand
