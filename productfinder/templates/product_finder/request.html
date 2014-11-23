@@ -6,8 +6,12 @@
 
 {% block body_block %}
 
-        <h2>Request Page</h2>
+		<h3> {{ brand }} {{ name }} Request Page  <br/>
+			<a href="{{ goback }}" class="btn btn-primary" role="button"> Go Back</a>	
+		</h3>
 		<div class="well">
+
+		<br/>
 		<p><b>{{ requester }}</b> is looking for this product :<br /></p>
 
 		<span class="label label-info" style="margin-left:10px">Name : {{ name }}</span><br />

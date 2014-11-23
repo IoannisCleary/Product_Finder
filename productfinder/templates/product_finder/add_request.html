@@ -1,7 +1,8 @@
 {% extends 'product_finder/base.html' %}
 {% block title %} Create a Request {% endblock %}
 {% block body_block %}
-		<h2>{{ category_type }} Request Page</h3>
+		<h2>{{ category_type }} Request Page <br/>
+			<a href="{{ goback }}" class="btn btn-primary" role="button"> Go Back</a></h2>
 		{% if user.is_authenticated %}
 		<div class="well">
         <form id="request_form" method="post" action="/product_finder/category/{{ category_type_url }}/add_request/">

@@ -37,7 +37,8 @@ def category(request,category_type_url):
 def add_request(request, category_type_url):
 	context = RequestContext(request)
 	category_type = category_type_url.replace('_', ' ')
-	print request.user
+	back = "/product_finder/category/" + category_type_url + "/"
+	print back
 	if request.method == 'POST':
 		form = RequestForm(request.POST)
 
@@ -56,7 +57,7 @@ def add_request(request, category_type_url):
 			print form.errors
 	else:
 		form = RequestForm()
-	return render_to_response('product_finder/add_request.html', {'category_type_url': category_type_url,'category_type': category_type,'form': form}, context)
+	return render_to_response('product_finder/add_request.html', {'category_type_url': category_type_url,'category_type': category_type,'form': form,'goback':back}, context)
 
 def request(request,category_type_url,request_productName_url):
 	context = RequestContext(request)
@@ -66,7 +67,9 @@ def request(request,category_type_url,request_productName_url):
 	category_type = category_type_url.replace('_', ' ')
 	print category_type_url
 	url = "/product_finder/category/" + category_type_url + "/" + request_productName_url 
-	context_dict = {'category_type': category_type, 'url':url}
+	back = "/product_finder/category/" + category_type_url + "/"
+	context_dict = {'category_type': category_type, 'url':url,'goback':back}
+	
 	try:
 		category = Category.objects.get(type = category_type)
 		request = Request.objects.filter(category = category, product_name = pName, product_brand = pB)
