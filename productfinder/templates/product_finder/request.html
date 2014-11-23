@@ -7,11 +7,11 @@
 {% block body_block %}
 
 		<h3> {{ brand }} {{ name }} Request Page  <br/>
-			<a href="{{ goback }}" class="btn btn-primary" role="button"> Go Back</a>	
+			<a href="{{ goback }}" class="btn btn-info" role="button"> Go Back</a>	
 		</h3>
-		<div class="well">
+	
 
-		<br/>
+		<div class="well" style="background-color:#F8F8F8;">
 		<p><b>{{ requester }}</b> is looking for this product :<br /></p>
 
 		<span class="label label-info" style="margin-left:10px">Name : {{ name }}</span><br />
@@ -31,27 +31,13 @@
 		{% endif %}
         <br/>
         <br/>
-
-        {% get_comment_count for request as comment_count%}
-        Comments <span class="badge">{{ comment_count }}</span> :<br/>
+	</div>
 
 
-        <ul style="list-style-type: none;">
-            {% get_comment_list for request as comment_list %}
-            {% for comment in comment_list %}
-            <li>
-                {{comment.user_name}} <span class="label label-default">{{comment.submit_date}}</span> :<br/>
-                {{comment.comment}}
-            </li>
-            <hr>
-            {% endfor %}
-        </ul>
-
-        {% if user.is_authenticated %}
+  {% if user.is_authenticated %}
         {% get_comment_form for request as form %}
-        Add a comment
         <form action="{% comment_form_target %}" method="POST">
-            <div class="input-group">
+            <div class="input-group" style="width : 40px">
 
             {% csrf_token %}
             {{ form.comment }}
@@ -62,11 +48,25 @@
             {{ form.security_hash }}
             </div>
             <input type="hidden" name="next" value="{{url}}" />
-            <input type="submit" value="Add comment" id="id_submit" />
+            <input type="submit" class ="btn btn-warning" value="Post response" id="id_submit" />
         </form>
         {% else %}
         <p>Please <a href="{% url 'login' %}">log in</a> to leave a comment.</p>
         {% endif %}
+		
+		<div class="well well-small">
+	{% get_comment_count for request as comment_count%}
+      <h4>  Responses <span class="badge">{{ comment_count }}</span></h4> <br/>
+        <ul style="list-style-type: none;">
+            {% get_comment_list for request as comment_list %}
+            {% for comment in comment_list %}
 
-	</div>
+               <b> {{comment.user_name}}</b> <span class="label label-info">{{comment.submit_date}}</span> : {{comment.comment}} <br/>
+ 
+            <hr>
+            {% endfor %}
+        </ul>
+
+</div>
+
 {% endblock %}

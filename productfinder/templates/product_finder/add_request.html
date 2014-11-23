@@ -2,7 +2,7 @@
 {% block title %} Create a Request {% endblock %}
 {% block body_block %}
 		<h2>{{ category_type }} Request Page <br/>
-			<a href="{{ goback }}" class="btn btn-primary" role="button"> Go Back</a></h2>
+			<a href="{{ goback }}" class="btn btn-info" role="button"> Go Back</a></h2>
 		{% if user.is_authenticated %}
 		<div class="well">
         <form id="request_form" method="post" action="/product_finder/category/{{ category_type_url }}/add_request/">
@@ -13,13 +13,18 @@
             {% endfor %}
 
             {% for field in form.visible_fields %}
-                {{ field.errors }}
+              
                 {{ field.help_text }}
-                {{ field }}
+				{% if  field.field.required  %}
+                {{ field }}   <span class="badge badge-important"> * {{ field.errors }}</span>
+				{% else %}
+				{{ field }}
+				{% endif %}
 				<br />
+					<br />
             {% endfor %}
 			<br />
-            <input type="submit" name="submit" value="Post request" class="btn btn-primary" />
+            <input type="submit" name="submit" value="Post request" class="btn btn-warning" />
         </form>
 		 {% else %}
                   Unable to do this while not being logged in.
