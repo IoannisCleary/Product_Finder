@@ -4,10 +4,12 @@
 {% load static %}
 	
 		<!--<img src="{% static "logo_small.png" %}" alt="Website logo" /><br /> -->
-		 
+		 <div class="media">
 		  <div class="well">
             {% if user.is_authenticated %}
-           <span class="label label-success">Welcome back <b>{{ user.username }}</b>!</span> 
+          <a class="pull-left">
+			<img class="media-object" style="padding-right:5px" src="{% static "user.png" %}">
+		</a> <span class="label label-success">Welcome back <b>{{ user.username }}</b>!</span> 
             {% endif %}
 		  <h3><b>Categories</b></h3>
 		  

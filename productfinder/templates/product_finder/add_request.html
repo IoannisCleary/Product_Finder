@@ -1,12 +1,16 @@
 {% extends 'product_finder/base.html' %}
+{% load static %}
 {% block title %} Create a Request {% endblock %}
 {% block body_block %}
-		<h2>{{ category_type }} Request Page <br/>
+		<h2>Create a Request <br/>
 			<a href="{{ goback }}" class="btn btn-info" role="button"> Go Back</a></h2>
 		{% if user.is_authenticated %}
 		<div class="well">
+		Category : <b>{{ category_type }}</b> <br/> <br/>
         <form id="request_form" method="post" action="/product_finder/category/{{ category_type_url }}/add_request/">
-
+  <a class="pull-left">
+    <img class="media-object" style="padding-right:15px"src="{% static "item.png" %}">
+  </a>
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
                 {{ hidden }}

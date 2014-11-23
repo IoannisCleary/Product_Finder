@@ -1,6 +1,6 @@
 {% extends 'product_finder/base.html' %}
 {% load comments %}
-
+{% load static %}
 {% block title %} Request {% endblock %}
 
 
@@ -13,7 +13,9 @@
 
 		<div class="well" style="background-color:#F8F8F8;">
 		<p><b>{{ requester }}</b> is looking for this product :<br /></p>
-
+  <a class="pull-left">
+    <img class="media-object" src="{% static "item.png" %}">
+  </a>
 		<span class="label label-info" style="margin-left:10px">Name : {{ name }}</span><br />
 		<span class="label label-info" style="margin-left:10px">Brand : {{ brand }}</span><br />
 		<span class="label label-inverse" style="margin-left:10px">Quantity : {{ quantity }}</span><br />
@@ -31,6 +33,7 @@
 		{% endif %}
         <br/>
         <br/>
+		
 	</div>
 
 
@@ -60,7 +63,9 @@
         <ul style="list-style-type: none;">
             {% get_comment_list for request as comment_list %}
             {% for comment in comment_list %}
-
+		<a class="pull-left">
+			<img class="media-object" style="padding-right:5px" src="{% static "user.png" %}">
+		</a>
                <b> {{comment.user_name}}</b> <span class="label label-info">{{comment.submit_date}}</span> : {{comment.comment}} <br/>
  
             <hr>
