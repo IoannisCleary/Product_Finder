@@ -5,10 +5,9 @@
 	
 		<!--<img src="{% static "logo_small.png" %}" alt="Website logo" /><br /> -->
 		 
-		 <a class="brand" href="/product_finder/"><h2>Product Finder</h2></a>
 		  <div class="well">
             {% if user.is_authenticated %}
-                Welcome back <b>{{ user.username }}</b>!<br />
+           <span class="label label-success">Welcome back <b>{{ user.username }}</b>!</span> 
             {% endif %}
 		  <h3><b>Categories</b></h3>
 		  

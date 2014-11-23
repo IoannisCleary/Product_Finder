@@ -8,17 +8,17 @@
         {% if category %}
 		{% if user.is_authenticated %}
 	
-		<a href="/product_finder/category/{{ category_type_url }}/add_request/" class="btn btn-warning btn-lg">Create a Request</a>
+		<a href="/product_finder/category/{{ category_type_url }}/add_request/" class="btn btn-warning btn-lg"><i class="icon-list-alt"></i> Create a Request</a>
 
 		{% endif %}
 		 </h2>
 		<div class="well">
             {% if requests %}
-            
+              <div class="list-group">
                 {% for request in requests %}
-                <a href="{{ request.url }}" class="btn btn-default">Looking for {{ request.product_quantity }} x <b>{{ request.product_brand }} {{ request.product_name }}</b></a><br/>
+                <a href="{{ request.url }}" class="list-group-item btn">Looking for {{ request.product_quantity }} x <b>{{ request.product_brand }} {{ request.product_name }}</b></a><br/>
                 {% endfor %}
-            
+            </div>
             {% else %}
                 <strong>No requests currently in category.</strong>
             {% endif %}
