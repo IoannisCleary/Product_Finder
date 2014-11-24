@@ -9,7 +9,7 @@
 		Category : <b>{{ category_type }}</b> <br/> <br/>
         <form id="request_form" method="post" action="/product_finder/category/{{ category_type_url }}/add_request/">
   <a class="pull-left">
-    <img class="media-object" style="padding-right:15px"src="{% static "item.png" %}">
+    <img class="media-object" style="padding-right:15px"src="{% static "item2.png" %}">
   </a>
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
@@ -28,7 +28,7 @@
 					<br />
             {% endfor %}
 			<br />
-            <input type="submit" name="submit" value="Post request" class="btn btn-warning" />
+            <input type="submit" name="submit" value="Post request" class="btn btn-warning btn-large" />
         </form>
 		 {% else %}
                   Unable to do this while not being logged in.

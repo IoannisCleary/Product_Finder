@@ -5,21 +5,22 @@
 
 
 {% block body_block %}
-
 		<h3>  Request : {{ brand }} {{ name }} <br/>
 			<a href="{{ goback }}" class="btn btn-info" role="button"> Go Back</a>	
 		</h3>
 	
-
 		<div class="well" style="background-color:#F8F8F8;">
 		<p><b>{{ requester }}</b> is looking for this product :<br /></p>
   <a class="pull-left">
-    <img class="media-object" src="{% static "item.png" %}">
+    <img class="media-object" style="margin-right:10px" src="{% static "item2.png" %}">
   </a>
+  <br/>
+	
 		<span class="label label-info" style="margin-left:10px">Name : {{ name }}</span><br />
 		<span class="label label-info" style="margin-left:10px">Brand : {{ brand }}</span><br />
 		<span class="label label-inverse" style="margin-left:10px">Quantity : {{ quantity }}</span><br />
 		<br />
+		
 		Available at:<br/>
 		{% if local %}
 		<span class="label label-success" style="margin-left:10px">+ Local stores</span>
@@ -32,16 +33,38 @@
 		<span class="label label-important" style="margin-left:10px">- On-line stores</span>
 		{% endif %}
         <br/>
-        <br/>
+		<br/>
+		{% if online %}
+		<div class="well">
+		<!-- This is an Amazon offial widget. Source: https://affiliate-program.amazon.co.uk/gp/associates/promo/search-widget.html -->
+		<script charset="utf-8" type="text/javascript">
+		amzn_assoc_ad_type = "responsive_search_widget";
+		amzn_assoc_tracking_id = "widgetsamazon-20";
+		amzn_assoc_link_id = "SBPFBXI6YTC47OAF";
+		amzn_assoc_marketplace = "amazon";
+		amzn_assoc_region = "US";
+		amzn_assoc_placement = "";
+		amzn_assoc_search_type = "search_widget";
+		amzn_assoc_width = "auto";
+		amzn_assoc_height = "auto";
+		amzn_assoc_default_search_category = "";
+		amzn_assoc_default_search_key = "{{ brand }} {{ name }}";
+		amzn_assoc_theme = "light";
+		amzn_assoc_bg_color = "FFFFFF";
+		</script>
+		<script src="//z-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&Operation=GetScript&ID=OneJS&WS=1&MarketPlace=US"></script>
+		</div>
+	   <br/>
+		{% endif %}
 		
 	</div>
 
 
-  {% if user.is_authenticated %}
+  {% if user.is_authenticated %}		
         {% get_comment_form for request as form %}
+		Note: You can add HTML code in your responses and even embed items such as Google Maps.
         <form action="{% comment_form_target %}" method="POST">
-            <div class="input-group" style="width : 40px">
-
+            <div class="input-group">
             {% csrf_token %}
             {{ form.comment }}
             {{ form.honeypot }}
@@ -51,7 +74,7 @@
             {{ form.security_hash }}
             </div>
             <input type="hidden" name="next" value="{{url}}" />
-            <input type="submit" class ="btn btn-warning" value="Post response" id="id_submit" />
+            <input type="submit" class ="btn btn-warning btn-large" value="Post response" id="id_submit" />
         </form>
         {% else %}
         <p>Please <a href="{% url 'login' %}">log in</a> to leave a comment.</p>
@@ -66,7 +89,7 @@
 		<a class="pull-left">
 			<img class="media-object" style="padding-right:5px" src="{% static "user.png" %}">
 		</a>
-               <b> {{comment.user_name}}</b> <span class="label label-info">{{comment.submit_date}}</span> : {{comment.comment}} <br/>
+               <b> {{comment.user_name}}</b> <span class="label label-info">{{comment.submit_date}}</span> : {% autoescape off %}<br/>{{comment.comment}}{% endautoescape %} <br/>
  
             <hr>
             {% endfor %}
