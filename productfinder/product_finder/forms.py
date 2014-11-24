@@ -10,7 +10,7 @@ class RequestForm(forms.ModelForm):
 	product_quantity = forms.IntegerField(help_text="Please enter the quantity that you are looking for.")
 	description = forms.CharField(max_length=600,help_text="Please enter a short description.")
 	area_local = forms.BooleanField(help_text="At local stores",required=False)
-	area_online = forms.BooleanField(help_text="At an on-line store",required=False)
+	area_online = forms.BooleanField(help_text="At an on-line stores",required=False)
 	completed = forms.BooleanField(widget=forms.HiddenInput(),required=False)
 	class Meta:
 		model = Request
