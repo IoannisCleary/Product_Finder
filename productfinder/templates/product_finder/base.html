@@ -22,9 +22,10 @@
 			</ul>
 			<ul class="nav navbar-right">
 			{% if user.is_authenticated %}
+			    <li><a href="/product_finder/profile/{{ user.username }}"><i class="icon-user"></i> Profile</a></li>
 			    <li><a href="/product_finder/logout/"><i class="icon-circle-arrow-left"></i> Logout</a></li>
 		    {% else %}
-				<li><a href="/product_finder/register/"><i class="icon-user"></i> Register</a></li>
+				<li><a href="/product_finder/register/"><i class="icon-wrench"></i> Register</a></li>
 				<li><a href="/product_finder/login/"><i class="icon-circle-arrow-right"></i> Login</a></li>
 			 {% endif %}
 			</ul>

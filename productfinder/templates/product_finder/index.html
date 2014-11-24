@@ -3,12 +3,12 @@
 {% block body_block %}
 {% load static %}
 		<!--<img src="{% static "logo_small.png" %}" alt="Website logo" /><br /> -->
-
+			
 		  <div class="well">
 		    {% if user.is_authenticated %}
           <a class="pull-left">
-			<img class="media-object" style="padding-right:5px" src="{% static "user.png" %}">
-		</a> <span class="label label-success">Welcome back <b><a href="/product_finder/profile/{{ user.username }}" >{{user.username}}</a></b>!</span>
+			<img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
+			</a> <span class="label label-success">Welcome back <b>{{user.username}}</b>!</span>
             {% endif %}
 		  <h3><b>Categories</b></h3>
 			{% if categories %}
@@ -20,7 +20,7 @@
 			{% else %}
             <strong>There are no categories present.</strong>
 			{% endif %}
-
+			
 			</div>
 
 {% endblock %}

@@ -18,6 +18,20 @@ def index(request):
 
 	return render_to_response('product_finder/index.html',context_dict,context)
 
+def profile(request,user_name):
+	context = RequestContext(request)
+	context_dict = {"user_name" : user_name}
+	try:
+		usr = User.objects.get(username = user_name)
+		userprofile = UserProfile.objects.get(user = usr)
+		context_dict['user'] = usr
+		context_dict['userprofile'] = userprofile
+		context_dict['phone'] = userprofile.phone
+		context_dict['country'] = userprofile.country
+		context_dict['city'] = userprofile.city
+	except User.DoesNotExist:
+		pass
+	return render_to_response('product_finder/profile.html',context_dict,context)
 
 def category(request,category_type_url):
 	context = RequestContext(request)
@@ -68,10 +82,10 @@ def request(request,category_type_url,request_productName_url):
 	pName = pbrand[1].replace('_ff_','-').replace('_',' ')
 	category_type = category_type_url.replace('_', ' ')
 	print category_type_url
-	url = "/product_finder/category/" + category_type_url + "/" + request_productName_url
+	url = "/product_finder/category/" + category_type_url + "/" + request_productName_url 
 	back = "/product_finder/category/" + category_type_url + "/"
 	context_dict = {'category_type': category_type, 'url':url,'goback':back}
-
+	
 	try:
 		category = Category.objects.get(type = category_type)
 		request = Request.objects.filter(category = category, product_name = pName, product_brand = pB)
@@ -167,15 +181,3 @@ def user_logout(request):
     logout(request)
 
     return HttpResponseRedirect('/product_finder/')
-
-def profile(request,user_name):
-	context = RequestContext(request)
-	context_dict = {"user_name" : user_name}
-	try:
-		usr = User.objects.get(username = user_name)
-		usrprofile = UserProfile.objects.get(user = usr)
-		context_dict['user'] = usr
-		context_dict['userprofile'] = usrprofile
-	except User.DoesNotExist:
-		pass
-	return render_to_response('product_finder/profile.html',context_dict,context)
