@@ -28,6 +28,8 @@ def category(request,category_type_url):
 		requests = Request.objects.filter(category = category)
 		context_dict['requests'] = requests
 		context_dict['category'] = category
+		context_dict['icon'] = category.icon
+		context_dict['cat_image'] = category.image
 	except Category.DoesNotExist:
 		pass
 	for request in requests:
@@ -73,8 +75,12 @@ def request(request,category_type_url,request_productName_url):
 	try:
 		category = Category.objects.get(type = category_type)
 		request = Request.objects.filter(category = category, product_name = pName, product_brand = pB)
+		userprofile = request[0].requester
+		context_dict['country'] = userprofile.country
+		context_dict['city'] = userprofile.city
 		context_dict['request'] = request[0]
 		context_dict['requester'] = request[0].requester
+		context_dict['description'] = request[0].description
 		context_dict['name'] = request[0].product_name
 		context_dict['brand'] = request[0].product_brand
 		context_dict['quantity'] = request[0].product_quantity
