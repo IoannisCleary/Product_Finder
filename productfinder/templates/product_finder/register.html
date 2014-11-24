@@ -1,8 +1,10 @@
 {% extends 'product_finder/base.html' %}
+{%load static%}
 {% block title %}Register{% endblock %}
 {% block body_block %}
         <h3>Register</h3>
-
+	<iframe style="background: grey url({% static "patterns/congruent_pentagon.png"%});background-repeat:repeat;" width="100%" height="150" frameborder="0"></iframe>
+		
         {% if registered %}
         <strong>thank you for registering!</strong>
         <a href="/product_finder/">Return to the homepage.</a><br />

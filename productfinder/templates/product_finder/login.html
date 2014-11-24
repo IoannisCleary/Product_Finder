@@ -1,8 +1,10 @@
 {% extends 'product_finder/base.html' %}
+{% load static %}
 {% block title %}Log - In{% endblock %}
 {% block body_block %}
     <body>
         <h3>Login page</h3>
+		<iframe style="background: grey url({% static "patterns/congruent_pentagon.png"%});background-repeat:repeat;" width="100%" height="150" frameborder="0"></iframe>
 		<div class="well">
         <form id="login_form" method="post" action="/product_finder/login/">
             {% csrf_token %}
