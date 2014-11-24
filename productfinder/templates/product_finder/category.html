@@ -1,17 +1,19 @@
 {% extends 'product_finder/base.html' %}
-
+{%load static%}
 {% block title %} Category : {{ category_type }}{% endblock %}
 
 	
 {% block body_block %}
-		
+			
 		<h3>{{ category_type }}  <i class="{{icon}}"></i> <br/>
         {% if category %}
+		<!--Source: http://subtlepatterns.com/  Images by: Ilya,Stefan Aleksić, Lasma,Carolynne,Caveman-->
+			<iframe style="background: grey url(&#47;static&#47;patterns&#47;{{cat_image}});background-repeat:repeat;" width="100%" height="100" frameborder="0"></iframe>
 			<a href="/product_finder/" class="btn btn-info" role="button"><i class="icon-white icon-chevron-left"></i> Go Back</a>
 		{% if user.is_authenticated %}
 		<a href="/product_finder/category/{{ category_type_url }}/add_request/" class="btn btn-warning btn-lg"><i class="icon-white icon-list-alt"></i> Create a Request</a>
 		{% endif %}
-	
+		
 		
 		 </h3>
 		<div class="well">

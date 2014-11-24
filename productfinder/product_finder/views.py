@@ -44,6 +44,7 @@ def category(request,category_type_url):
 		context_dict['category'] = category
 		context_dict['icon'] = category.icon
 		context_dict['cat_image'] = category.image
+		print category.image
 	except Category.DoesNotExist:
 		pass
 	for request in requests:
