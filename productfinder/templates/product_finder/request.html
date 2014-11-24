@@ -6,22 +6,22 @@
 
 {% block body_block %}
 		<h3>  Request : {{ brand }} {{ name }} <br/>
-			<a href="{{ goback }}" class="btn btn-info" role="button"><i class="icon-white icon-chevron-left"></i> Go Back</a>	
+			<a href="{{ goback }}" class="btn btn-info" role="button"><i class="icon-white icon-chevron-left"></i> Go Back</a>
 		</h3>
-	
+
 		<div class="well" style="background-color:#F8F8F8;">
 		<p><b>{{ requester }}</b> is looking for this product :<br /></p>
   <a class="pull-left">
     <img class="media-object" style="margin-right:10px" src="{% static "item2.png" %}">
   </a>
   <br/>
-	
+
 		<span class="label label-info" style="margin-left:10px">Name : {{ name }}</span><br />
 		<span class="label label-info" style="margin-left:10px">Brand : {{ brand }}</span><br />
 		<span class="label label-inverse" style="margin-left:10px">Quantity : {{ quantity }}</span><br />
 				<span class="label label-default" style="margin-left:10px">Description : {{ description }}</span><br />
 		<br />
-		
+
 		Available at:<br/>
 		{% if local %}
 		<span class="label label-success" style="margin-left:10px">+ Local stores ( {{ city}}, {{country}} )</span>
@@ -56,11 +56,11 @@
 		</div>
 	   <br/>
 		{% endif %}
-		
+
 	</div>
 
 
-  {% if user.is_authenticated %}		
+  {% if user.is_authenticated %}
         {% get_comment_form for request as form %}
 		Note: You can add HTML code in your responses and even embed items such as Google Maps.
         <form action="{% comment_form_target %}" method="POST">
@@ -79,7 +79,7 @@
         {% else %}
         <p>Please <a href="{% url 'login' %}">log in</a> to leave a comment.</p>
         {% endif %}
-		
+
 		<div class="well well-small">
 	{% get_comment_count for request as comment_count%}
       <h4>  Responses <span class="badge">{{ comment_count }}</span></h4> <br/>
@@ -89,8 +89,8 @@
 		<a class="pull-left">
 			<img class="media-object" style="padding-right:5px" src="{% static "user.png" %}">
 		</a>
-               <b> {{comment.user_name}}</b> <span class="label label-info">{{comment.submit_date}}</span> : {% autoescape off %}<br/>{{comment.comment}}{% endautoescape %} <br/>
- 
+               <b> <a href="/product_finder/profile/{{ comment.user_name }}" >{{ comment.user_name }}</a></b> <span class="label label-info">{{comment.submit_date}}</span> : {% autoescape off %}<br/>{{comment.comment}}{% endautoescape %} <br/>
+
             <hr>
             {% endfor %}
         </ul>

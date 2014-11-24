@@ -9,6 +9,7 @@ urlpatterns = patterns('',
 		url(r'^register/$', views.register, name='register'),
 		url(r'^login/$', views.user_login, name='login'),
 		url(r'^logout/$', views.user_logout, name='logout'),
+		url(r'^profile/(?P<user_name>\w+)/$',views.profile,name='profile'),
     # Examples:
     # url(r'^$', 'productfinder.views.home', name='home'),
     # url(r'^productfinder/', include('productfinder.foo.urls')),

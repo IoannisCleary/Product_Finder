@@ -1,0 +1,20 @@
+{% extends 'product_finder/base.html' %}
+{% block title %} Profile {% endblock %}
+{% load static %}
+
+{% block body_block %}
+<body>
+    <h3>
+        Profile: {{user.username}}<br/>
+        <a href="/product_finder/" class="btn btn-info" role="button"> Go Back</a>
+    </h3>
+    <div class="well">
+        <img class="media-object" style="height:120px;width:100px;" src="{% static "user_big.png" %}">
+        <br/>
+        <img class="media-object" style="height:20px;width:100px;" src="{% static "ranking.png" %}">
+        <br/>
+        <span class="label label-info">Requests:</span> <span class="badge">20</span></a></li><br/>
+        <span class="label label-info">Helpful responses:</span>  <span class="badge">10</span></a></li><br/>
+    </div>
+
+{% endblock %}
