@@ -86,10 +86,11 @@
         <ul style="list-style-type: none;">
             {% get_comment_list for request as comment_list %}
             {% for comment in comment_list %}
+	
 		<a class="pull-left">
 			<img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
 		</a>
-              <b> <a href="/product_finder/profile/{{ comment.user_name }}" >{{ comment.user_name }}</a></b> <span class="label label-info">{{comment.submit_date}}</span> : {% autoescape off %}<br/>{{comment.comment}}{% endautoescape %} <br/>
+               <b> <a href="/product_finder/profile/{{ comment.user_name }}" >{{ comment.user_name }}</a></b> <span class="label label-info">{{comment.submit_date}}</span> : {% autoescape off %}<br/>{{comment.comment}}{% endautoescape %}<li><a href="#" class="btn-success btn"></i> Helpful</a><a href="#" class="btn-danger btn"></i> Mark as spam</a></li> <br/>
 
             <hr>
             {% endfor %}
