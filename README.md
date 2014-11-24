@@ -2,7 +2,7 @@ Product_Finder
 ==============
 Getting started
 ----
-Within a virtual environment:
+Within a virtual environment:<br/>
 	1. Run "pip -install -r requirements.txt" and let it install what you need for the project to run<br/>
 	2. Go into the project folder ("cd productfinder") <br/>
 	3. Run "python manage.py syncdb" to create a database<br/>
