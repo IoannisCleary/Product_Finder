@@ -117,6 +117,7 @@
             <input type="hidden" name="next" value="{{url}}" />
             <input type="submit" class ="btn btn-warning btn-large" value="Post response" id="id_submit" />
         </form>
+	<b>	< br/> </b>- line break ;  <b>< a href="(url address)">(website name)< / a> </b>- link to website  [remove spaces between '<', '/', '>' and 'a','br'] 
         {% else %}
         <p>Please <a href="{% url 'login' %}">log in</a> to leave a comment.</p>
         {% endif %}
