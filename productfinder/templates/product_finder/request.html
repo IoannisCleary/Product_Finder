@@ -8,7 +8,7 @@
 		<h3>  Request : {{ brand }} {{ name }} <br/>
 			<a href="{{ goback }}" class="btn btn-info" role="button"><i class="icon-white icon-chevron-left"></i> Go Back</a>
 		</h3>
-
+	
 		<div class="well" style="background-color:#F8F8F8;">
 		<p><b>{{ requester }}</b> is looking for this product :<br /></p>
   <a class="pull-left">
@@ -62,7 +62,7 @@
 		<div class="well well-small">
 		<h4>Helpful responses<span class="badge badge-success">1</span></h4>
 			<div class="container-fluid" style="background-color:lightgreen;">
-			<a class="pull-left"><span class="label label-warning"><i class="icon-white icon-star"></i>
+			<a class="pull-left"><span class="label label-warning"><i class="icon-white icon-star"></i> </span> <b>+5 </b>
 			<div class="container-fluid">
 				<a class="pull-left">
 					</span><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
@@ -80,9 +80,9 @@
             {% for comment in comment_list %}
 
 		<a class="pull-left">
-			<img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
+			<b>+1 </b><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}"> 
 		</a>
-               <b> <a href="/product_finder/profile/{{ comment.user_name }}" >{{ comment.user_name }}</a></b> <span class="label label-info">{{comment.submit_date}}</span> : {% autoescape off %}<br/>{{comment.comment}}{% endautoescape %}<li><a href="#" class="btn-success btn"></i> Helpful</a><a href="#" class="btn-danger btn"></i> Mark as spam</a></li> <br/>
+               <b> <a href="/product_finder/profile/{{ comment.user_name }}" >{{ comment.user_name }}</a></b> <span class="label label-info">{{comment.submit_date}}</span> : {% autoescape off %}<br/>{{comment.comment}}{% endautoescape %}<li><a href="#" class="btn-success btn"></i><i class="icon-white icon-star-empty"></i> </span> Helpful</a><a href="#" class="btn-danger btn"></i> Mark as spam</a><a href="#" class="btn-primary btn"></i>+ Upvote</a></li> <br/>
 
             <hr>
             {% endfor %}
@@ -91,6 +91,7 @@
 <div id="spam" style="display: none">
 	<div class="container-fluid" style="background-color:red;">
     <div class="container-fluid">
+	
 				<a class="pull-left">
 					</span><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
 				</a>

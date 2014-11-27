@@ -102,6 +102,7 @@ def request(request,category_type_url,request_productName_url):
 		context_dict['local'] = request[0].area_local
 		context_dict['online'] = request[0].area_online
 		context_dict['category'] = category
+
 	except Request.DoesNotExist:
 		pass
 	return render_to_response('product_finder/request.html',context_dict,context)
