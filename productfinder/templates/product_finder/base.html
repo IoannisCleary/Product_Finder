@@ -2,40 +2,51 @@
 {% load static %}
 {% load bootstrap %}
 <html>
-    <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="{% static 'css/bootstrap-fluid-adj.css' %}" rel="stylesheet">
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="screen">
     <link href="{% static 'css/bootstrap-responsive.css' %}" rel="stylesheet">
-	<link href="{% static 'css/style.css' %}" rel="stylesheet">
-        <title>Product Finder - {% block title %}{% endblock %}</title>
-    </head>
-    <body>
-	<div class="container-fluid">
-	<div class="nav navbar">
-		<div class="navbar-inner">
-			<a class="brand">Product Finder</a>
-			<ul class="nav">
-				<li class="active"><a href="/product_finder/"><i class="icon-home"></i> Home</a></li>
-			</ul>
-			<ul class="nav navbar-right">
-			{% if user.is_authenticated %}
-			    <li><a href="/product_finder/profile/{{ user.username }}"><i class="icon-user"></i> Profile</a></li>
-			    <li><a href="/product_finder/logout/"><i class="icon-circle-arrow-left"></i> Logout</a></li>
-		    {% else %}
-				<li><a href="/product_finder/register/"><i class="icon-wrench"></i> Register</a></li>
-				<li><a href="/product_finder/login/"><i class="icon-circle-arrow-right"></i> Login</a></li>
-			 {% endif %}
-			</ul>
-		</div>
-	</div>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <title>Product Finder - {% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="nav navbar">
+            <div class="navbar-inner">
 
-		<div class="container-fluid"> 
-        {% block body_block %}{% endblock %}
-		</div>
-		</div>
-	<script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <a class="brand">Product Finder</a>
+
+                <div class="nav-collapse collapse">
+                    <ul class="nav">
+                        <li class="active"><a href="/product_finder/"><i class="icon-home"></i> Home</a></li>
+                    </ul>
+                    <ul class="nav navbar-right pull-right">
+                        {% if user.is_authenticated %}
+                        <li><a href="/product_finder/profile/{{ user.username }}"><i class="icon-user"></i> Profile</a></li>
+                        <li><a href="/product_finder/logout/"><i class="icon-circle-arrow-left"></i> Logout</a></li>
+                        {% else %}
+                        <li><a href="/product_finder/register/"><i class="icon-wrench"></i> Register</a></li>
+                        <li><a href="/product_finder/login/"><i class="icon-circle-arrow-right"></i> Login</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            {% block body_block %}{% endblock %}
+        </div>
+    </div>
+    <script src="{% static 'js/jquery-2.1.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    </body>
+</body>
 </html>
