@@ -19,7 +19,7 @@
 		<div class="well">
             {% if requests %}
                 {% for request in requests %}
-                <a href="{{ request.url }}" class="list-group-item btn btn-large"> Looking for <b>{{ request.product_quantity }}</b> x <b>{{ request.product_brand }} {{ request.product_name }}</b></a><br/>
+                <a href="{{ request.url }}" class="list-group-item btn"> Looking for <b>{{ request.product_quantity }}</b> x <b>{{ request.product_brand }} {{ request.product_name }}</b></a><br/>
                 {% endfor %}
             {% else %}
                 <strong>No requests currently in category.</strong>

@@ -35,8 +35,10 @@
 		{% endif %}
         <br/>
 		<br/>
-		{% if online %}
-		<div class="well">
+
+	</div>
+	{% if online %}
+		<div  class="container-fluid">
 		<!-- This is an Amazon offial widget. Source: https://affiliate-program.amazon.co.uk/gp/associates/promo/search-widget.html -->
 		<script charset="utf-8" type="text/javascript">
 		amzn_assoc_ad_type = "responsive_search_widget";
@@ -57,9 +59,48 @@
 	   <br/>
 		{% endif %}
 
-	</div>
+		<div class="well well-small">
+		<h4>Helpful responses<span class="badge badge-success">1</span></h4>
+			<div class="container-fluid" style="background-color:lightgreen;">
+			<a class="pull-left"><span class="label label-warning"><i class="icon-white icon-star"></i>
+			<div class="container-fluid">
+				<a class="pull-left">
+					</span><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
+				</a>
+				<b>Fake</b> <span class="label">28 Nov 2014, 3:23 p.m.</span> : {% autoescape off %}<br/>This is a helpfull response :) {% endautoescape %} <br/>
+</div>
+				</a>
+			</div>
+	
+	{% get_comment_count for request as comment_count%}
+      <h4>  Other responses <span class="badge">{{ comment_count }}</span></h4> <br/>
+ <br/> <br/>
+        <ul style="list-style-type: none;">
+            {% get_comment_list for request as comment_list %}
+            {% for comment in comment_list %}
 
+		<a class="pull-left">
+			<img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
+		</a>
+               <b> <a href="/product_finder/profile/{{ comment.user_name }}" >{{ comment.user_name }}</a></b> <span class="label label-info">{{comment.submit_date}}</span> : {% autoescape off %}<br/>{{comment.comment}}{% endautoescape %}<li><a href="#" class="btn-success btn"></i> Helpful</a><a href="#" class="btn-danger btn"></i> Mark as spam</a></li> <br/>
 
+            <hr>
+            {% endfor %}
+			
+			  Comment has been  marked as spam  <button class="btn" onclick="$('#spam').toggle();">Show</button>
+<div id="spam" style="display: none">
+	<div class="container-fluid" style="background-color:red;">
+    <div class="container-fluid">
+				<a class="pull-left">
+					</span><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
+				</a>
+				<b style="color:white;">Fake</b> <span class="label">28 Nov 2014, 2:23 p.m.</span> : {% autoescape off %}<br/><p style="color:white;">This is spam </p>{% endautoescape %}
+</div>
+			</div>
+</div>
+        </ul>
+</div>
+<div class="container-fluid">
   {% if user.is_authenticated %}
         {% get_comment_form for request as form %}
 		Note: You can add HTML code in your responses and even embed items such as Google Maps.
@@ -79,31 +120,5 @@
         {% else %}
         <p>Please <a href="{% url 'login' %}">log in</a> to leave a comment.</p>
         {% endif %}
-
-		<div class="well well-small">
-			<h3>Helpful responses<span class="badge">1</span></h3>
-			<div class="container-fluid" style="background-color:lightgreen;">
-				<a class="pull-left">
-					<span class="label label-warning"><i class="icon-white icon-star"></i></span><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
-				</a>
-				<b>Fake</b> <span class="label label-info">28 Nov 2014, 3:23 p.m.</span> : {% autoescape off %}<br/><br/>This is a helpfull response :) {% endautoescape %} <br/>
-
-			</div>
-	{% get_comment_count for request as comment_count%}
-      <h3>  Other responses <span class="badge">{{ comment_count }}</span></h3> <br/>
-        <ul style="list-style-type: none;">
-            {% get_comment_list for request as comment_list %}
-            {% for comment in comment_list %}
-
-		<a class="pull-left">
-			<img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
-		</a>
-               <b> <a href="/product_finder/profile/{{ comment.user_name }}" >{{ comment.user_name }}</a></b> <span class="label label-info">{{comment.submit_date}}</span> : {% autoescape off %}<br/>{{comment.comment}}{% endautoescape %}<li><a href="#" class="btn-success btn"></i> Helpful</a><a href="#" class="btn-danger btn"></i> Mark as spam</a></li> <br/>
-
-            <hr>
-            {% endfor %}
-        </ul>
-
 </div>
-
 {% endblock %}

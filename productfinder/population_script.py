@@ -1,22 +1,26 @@
 import os
 
 def populate():
-    food = add_category(type = "Food and Drinks",icon="icon-glass",image="food.png")
-    health = add_category(type = "Health and Beauty",icon="icon-eye-open",image="xv.png")
-    entertainment = add_category (type = "Home and Entertainment",icon="icon-headphones",image="random_grey_variations.png")
-    pet = add_category (type = "Pets",icon="icon-leaf",image="pool_table.png")
-    other = add_category (type = "Other",icon="icon-certificate",image="washi.png")
-	admin = add_profile(username = "admin",name = "admin",phone = 123456,city = "AdminCity", country = "AdminLand")
+	food = add_category(type = "Food and Drinks",icon="icon-glass",image="food.png")
+	health = add_category(type = "Health and Beauty",icon="icon-eye-open",image="xv.png")
+	entertainment = add_category (type = "Home and Entertainment",icon="icon-headphones",image="random_grey_variations.png")
+	pet = add_category (type = "Pets",icon="icon-leaf",image="pool_table.png")
+	other = add_category (type = "Other",icon="icon-certificate",image="washi.png")
 	
-    user1 = add_requester(username = "BilboLOTR69",name = "Regina George",phone = 123456,city = "Glasgow", country = "United Kingdom")
-    luckycharms = add_request(requester = user1, category = food, product_name = "Lucky Charms", product_brand = "General Mills", product_quantity = 2,description="Corn flakes")
-    makeup = add_request(requester = user1, category = health, product_name = "Waterproof eye-liner", product_brand = "MAC", product_quantity = 1,description=" MAC Cosmetics Pro ")
-    petFood = add_request(requester = user1, category = pet, product_name = "Dog dried food", product_brand = "Any", product_quantity = 1,description="Beef flavoured")
-    entertainmentConsole = add_request(requester = user1, category = entertainment, product_name = "PS4", product_brand = "Sony", product_quantity = 1,description=" Playstation 4")
-    otherProduct = add_request(requester = user1, category = other, product_name = "Band t-shirt", product_brand = "Any", product_quantity = 1,description=" Black colour")
-
-    add_response(text = "Can be found at Tesco or American Candy Stores", helpful = True, request = luckycharms)
-    add_response(text = "Why do you need this?", helpful = False, request = luckycharms)
+	user1 = add_requester(username = "BilboLOTR69",name = "Regina George",phone = 123456,city = "Glasgow", country = "United Kingdom")
+	luckycharms = add_request(requester = user1, category = food, product_name = "Lucky Charms", product_brand = "General Mills", product_quantity = 2,description="Corn flakes")
+	cola = add_request(requester = user1, category = food, product_name = "Cherry cola", product_brand = "Coca cola", product_quantity = 6,description="Soft drink")
+	crisps = add_request(requester = user1, category = food, product_name = "Pickled onion crisps", product_brand = "Walkers", product_quantity = 5,description="Potato crisps packet of 32.5 gr")
+	peanutbutter = add_request(requester = user1, category = food, product_name = "Peanut butter cups", product_brand = "Reeses", product_quantity = 4,description="Chocolates with peanut butter filling")
+	pumpkins = add_request(requester = user1, category = food, product_name = "Pumpkins", product_brand = "any", product_quantity = 4,description="Orange pumpkins")
+	candycorn = add_request(requester = user1, category = food, product_name = "Candy corn", product_brand = "Brachs", product_quantity = 1,description="Candy")
+	makeup = add_request(requester = user1, category = health, product_name = "Waterproof eye-liner", product_brand = "MAC", product_quantity = 1,description=" MAC Cosmetics Pro ")
+	lipstick = add_request(requester = user1, category = health, product_name = "Matte lip tar", product_brand = "Obsessive compulsive cosmetics", product_quantity = 10,description=" Make-up ")
+	bronzer = add_request(requester = user1, category = health, product_name = "Bronzer", product_brand = "Sunkissed", product_quantity = 1,description=" Make-up ")
+	dogFood = add_request(requester = user1, category = pet, product_name = "Dog dry food", product_brand = "Any", product_quantity = 1,description="Beef flavoured")
+	catFood = add_request(requester = user1, category = pet, product_name = "Dry food", product_brand = "Whiskas", product_quantity = 3,description="Beef flavoured")
+	entertainmentConsole = add_request(requester = user1, category = entertainment, product_name = "PS4", product_brand = "Sony", product_quantity = 1,description=" Playstation 4")
+	otherProduct = add_request(requester = user1, category = other, product_name = "Band t-shirt", product_brand = "Any", product_quantity = 1,description=" Black colour")
 
 def add_category(type,icon,image):
 	cat = Category.objects.get_or_create(type=type,icon=icon,image=image)[0]
