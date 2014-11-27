@@ -6,33 +6,36 @@
 <body>
     <h3>
      {{user.username}}'s Profile <br/>
-	 	<iframe style="background: grey url({% static "patterns/congruent_pentagon.png"%});background-repeat:repeat;" width="100%" height="50" frameborder="0"></iframe>
-		<a href="/product_finder/" class="btn btn-info" role="button"><i class="icon-white icon-chevron-left"></i> Go Back</a>
+         <iframe style="background: grey url({% static "patterns/congruent_pentagon.png"%});background-repeat:repeat;" width="100%" height="50" frameborder="0"></iframe>
+        <a href="/product_finder/" class="btn btn-info" role="button"><i class="icon-white icon-chevron-left"></i> Go Back</a>
     </h3>
     <div class="well">
-		<a href="#" class="btn-danger btn btn-small">Report</a><br/><br/>
-	<div class="container-fluid">
-	 <a class="pull-left">
-        <img class="img-circle" style="height:120px;width:100px; padding-right:15px;" src="{% static "user_big.png" %}"></a>
+        <a href="#" class="btn-danger btn btn-small">Report</a><br/><br/>
+    <div class="container-fluid">
+     <a class="pull-left">
+        <img class="img-circle" style="height:120px;width:100px; padding-right:15px;" src="{% static "user_big.png" %}">
+        <div class="container-fluid">
+            <div class="container-fluid">
+                <span class="label label-info">Name:</span> <span class="badge">{{user.username}}</span><br/>
+                <span class="label label-info">City:</span> <span class="badge">{{city}}</span><br/>
+                <span class="label label-info">Country:</span> <span class="badge">{{country}}</span><br/>
+                <span class="label label-inverse">Requests:</span> <span class="badge">20</span><br/>
+                <span class="label label-success">Helpful responses:</span>  <span class="badge">10</span></a></li><br/><br/></div>
+            </div></div>
+        </a>
         <br/>
-		<div class="container">
-		 <span class="label label-info">Name:</span> <span class="badge">{{user.username}}</span><br/>
-		  <span class="label label-info">City:</span> <span class="badge">{{city}}</span><br/>
-		  <span class="label label-info">Country:</span> <span class="badge">{{country}}</span><br/>
-        <span class="label label-inverse">Requests:</span> <span class="badge">20</span><br/>
-		     <span class="label label-success">Helpful responses:</span>  <span class="badge">10</span></a></li><br/><br/></div>
-			 </div>
-			 <div class="container-fluid">
-			 &nbsp;&nbsp;&nbsp;&nbsp;<b>Ranking</b><br/>
-			 &nbsp; <span class="badge badge-info">Superstar</span><br/>
-			 &nbsp;&nbsp;&nbsp;&nbsp;<b>Reputation
-		 &nbsp;  <img class="media-object" style="height:20px;width:100px;" src="{% static "ranking.png" %}">
-		    &nbsp;&nbsp;&nbsp;&nbsp;<b>Badges</b><br/>
-			 <span class="label label-warning">* First helpful response *</span>,<span class="label label-warning">* 10 requests *</span>,<span class="label label-warning">* 10 helpful responses *</span>
-			 
+
+             <div class="container-fluid">
+             &nbsp;&nbsp;&nbsp;&nbsp;<b>Ranking</b><br/>
+             &nbsp; <span class="badge badge-info">Superstar</span><br/>
+             &nbsp;&nbsp;&nbsp;&nbsp;<b>Reputation
+         &nbsp;  <img class="media-object" style="height:20px;width:100px;" src="{% static "ranking.png" %}">
+            &nbsp;&nbsp;&nbsp;&nbsp;<b>Badges</b><br/>
+             <span class="label label-warning">* First helpful response *</span>,<span class="label label-warning">* 10 requests *</span>,<span class="label label-warning">* 10 helpful responses *</span>
+
    </div>
-   
+
     </div>
-	
+
 
 {% endblock %}
