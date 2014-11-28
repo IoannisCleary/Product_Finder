@@ -36,7 +36,11 @@ def add_request(requester,category,product_name,product_brand,product_quantity,d
 	rqst = Request.objects.get_or_create(requester=requester,category=category,product_name=product_name,product_brand=product_brand,product_quantity=product_quantity,description=description)[0]
 	return rqst
 
-# Start execution here!
+# References:
+# This script was created with the help of a Tango with Django book chapter 
+# Chapter 5. Models and Databases 
+# http://www.tangowithdjango.com/book/chapters/models.html#creating-a-population-script
+
 if __name__ == '__main__':
     print "Starting Product Finder population script..."
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'productfinder.settings')
