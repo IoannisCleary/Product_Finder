@@ -21,6 +21,7 @@ class Category(models.Model):
 		return self.type
 	class Meta:
 		verbose_name_plural = "Categories"
+		
 class Request(models.Model):
 	requester = models.ForeignKey(UserProfile)
 	category = models.ForeignKey(Category)
@@ -34,11 +35,3 @@ class Request(models.Model):
 
 	def __unicode__(self):
 		return self.product_name
-
-class Response(models.Model):
-	text = models.CharField(max_length=800)
-	helpful = models.BooleanField(default=False)
-	request = models.ForeignKey(Request)
-
-	def __unicode__(self):
-		return self.text

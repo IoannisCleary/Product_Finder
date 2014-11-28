@@ -35,14 +35,11 @@ def add_requester(username,name,phone,city,country):
 def add_request(requester,category,product_name,product_brand,product_quantity,description):
 	rqst = Request.objects.get_or_create(requester=requester,category=category,product_name=product_name,product_brand=product_brand,product_quantity=product_quantity,description=description)[0]
 	return rqst
-def add_response(text,helpful,request):
-	resp = Response.objects.get_or_create(text=text,helpful=helpful,request=request)[0]
-	return resp
 
 # Start execution here!
 if __name__ == '__main__':
     print "Starting Product Finder population script..."
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'productfinder.settings')
     from django.contrib.auth.models import User
-    from product_finder.models import Request,Response,UserProfile,Category
+    from product_finder.models import Request,UserProfile,Category
     populate()

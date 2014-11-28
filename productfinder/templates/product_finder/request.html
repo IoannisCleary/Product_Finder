@@ -12,16 +12,15 @@
 		<div class="well" style="background-color:#F8F8F8;">
 		<p><b>{{ requester }}</b> is looking for this product :<br /></p>
   <a class="pull-left">
-    <img class="media-object" style="margin-right:10px" src="{% static "item2.png" %}">
-  </a>
-  <br/>
-
+	<div class="container-fluid"> <img class="media-object" style="margin-right:10px" src="{% static "item2.png" %}"></div>
+		<div class="container-fluid">
+		<br/>
 		<span class="label label-info" style="margin-left:10px">Name : {{ name }}</span><br />
 		<span class="label label-info" style="margin-left:10px">Brand : {{ brand }}</span><br />
 		<span class="label label-inverse" style="margin-left:10px">Quantity : {{ quantity }}</span><br />
-				<span class="label label-default" style="margin-left:10px">Description : {{ description }}</span><br />
+		<span class="label label-default" style="margin-left:10px">Description : {{ description }}</span><br />
 		<br />
-
+	
 		Available at:<br/>
 		{% if local %}
 		<span class="label label-success" style="margin-left:10px">+ Local stores ( {{ city}}, {{country}} )</span>
@@ -35,8 +34,12 @@
 		{% endif %}
         <br/>
 		<br/>
+ </a>
+	</div>
+	</div>
 
 	</div>
+
 	{% if online %}
 		<div  class="container-fluid">
 		<!-- This is an Amazon offial widget. Source: https://affiliate-program.amazon.co.uk/gp/associates/promo/search-widget.html -->
@@ -62,14 +65,17 @@
 		<div class="well well-small">
 		<h4>Helpful responses<span class="badge badge-success">1</span></h4>
 			<div class="container-fluid" style="background-color:lightgreen;">
-			<a class="pull-left"><span class="label label-warning"><i class="icon-white icon-star"></i> </span> <b>+5 </b>
+						<br/>
+			<a class="pull-left">&nbsp;&nbsp;&nbsp;<span class="label label-warning"><i class="icon-white icon-star"></i> </span> <b>+5 </b>
 			<div class="container-fluid">
+
 				<a class="pull-left">
 					</span><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
 				</a>
 				<b>Fake</b> <span class="label">28 Nov 2014, 3:23 p.m.</span> : {% autoescape off %}<br/>This is a helpfull response :) {% endautoescape %} <br/>
 </div>
 				</a>
+				<br/>
 			</div>
 	
 	{% get_comment_count for request as comment_count%}
@@ -80,7 +86,7 @@
             {% for comment in comment_list %}
 	<div class ="container-fluid">
 		<a class="pull-left">
-			<b>+1 </b><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}"> 
+		<b>+1 </b><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}"> 
 		</a>
                <b> <a href="/product_finder/profile/{{ comment.user_name }}" >{{ comment.user_name }}</a></b> <span class="label label-info">{{comment.submit_date}}</span> : {% autoescape off %}<br/>{{comment.comment}}{% endautoescape %}</div><br/><li><a href="#" class="btn-success btn"></i><i class="icon-white icon-star-empty"></i> </span> Helpful</a><a href="#" class="btn-danger btn"></i> Mark as spam</a><a href="#" class="btn-primary btn"></i>+ Upvote</a></li> <br/>
 
@@ -93,10 +99,11 @@
     <div class="container-fluid">
 	<br/>
 				<a class="pull-left">
-					</span><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
 				</a>
 				<b style="color:white;">Fake</b> <span class="label">28 Nov 2014, 2:23 p.m.</span> <b style="color:white;">:</b> {% autoescape off %}<br/><p style="color:white;">This is spam </p>{% endautoescape %}
 </div>
+			<br/>
 			</div>
 </div>
         </ul>
