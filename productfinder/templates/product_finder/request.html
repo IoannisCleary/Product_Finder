@@ -73,16 +73,16 @@
 			</div>
 	
 	{% get_comment_count for request as comment_count%}
-      <h4>  Other responses <span class="badge">{{ comment_count }}</span></h4> <br/>
- <br/> <br/>
+    <br/>  <h4>  Other responses <span class="badge">{{ comment_count }}</span></h4>
+ <br/> 
         <ul style="list-style-type: none;">
             {% get_comment_list for request as comment_list %}
             {% for comment in comment_list %}
-
+	<div class ="container-fluid">
 		<a class="pull-left">
 			<b>+1 </b><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}"> 
 		</a>
-               <b> <a href="/product_finder/profile/{{ comment.user_name }}" >{{ comment.user_name }}</a></b> <span class="label label-info">{{comment.submit_date}}</span> : {% autoescape off %}<br/>{{comment.comment}}{% endautoescape %}<li><a href="#" class="btn-success btn"></i><i class="icon-white icon-star-empty"></i> </span> Helpful</a><a href="#" class="btn-danger btn"></i> Mark as spam</a><a href="#" class="btn-primary btn"></i>+ Upvote</a></li> <br/>
+               <b> <a href="/product_finder/profile/{{ comment.user_name }}" >{{ comment.user_name }}</a></b> <span class="label label-info">{{comment.submit_date}}</span> : {% autoescape off %}<br/>{{comment.comment}}{% endautoescape %}</div><br/><li><a href="#" class="btn-success btn"></i><i class="icon-white icon-star-empty"></i> </span> Helpful</a><a href="#" class="btn-danger btn"></i> Mark as spam</a><a href="#" class="btn-primary btn"></i>+ Upvote</a></li> <br/>
 
             <hr>
             {% endfor %}
@@ -91,11 +91,11 @@
 <div id="spam" style="display: none">
 	<div class="container-fluid" style="background-color:red;">
     <div class="container-fluid">
-	
+	<br/>
 				<a class="pull-left">
 					</span><img class="img-circle" style="padding-right:5px" src="{% static "user.png" %}">
 				</a>
-				<b style="color:white;">Fake</b> <span class="label">28 Nov 2014, 2:23 p.m.</span> : {% autoescape off %}<br/><p style="color:white;">This is spam </p>{% endautoescape %}
+				<b style="color:white;">Fake</b> <span class="label">28 Nov 2014, 2:23 p.m.</span> <b style="color:white;">:</b> {% autoescape off %}<br/><p style="color:white;">This is spam </p>{% endautoescape %}
 </div>
 			</div>
 </div>
