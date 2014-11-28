@@ -22,13 +22,18 @@ def dataImport():
 	entertainmentConsole = create_request(requester = user1, category = entertainment, product_name = "PS4", product_brand = "Sony", product_quantity = 1,description=" Playstation 4")
 	otherProduct = create_request(requester = user1, category = other, product_name = "Band t-shirt", product_brand = "Any", product_quantity = 1,description=" Black colour")
 
+# Creating a category in the database
 def create_category(type,icon,image):
 	cat = Category.objects.get_or_create(type=type,icon=icon,image=image)[0]
 	return cat
+
+# Creating a User in the database
 def create_requester(username,name,phone,city,country):
     usr = User.objects.get_or_create(username=username)[0]
     usrprofile = UserProfile.objects.get_or_create(user = usr,name=name,phone=phone,city=city,country=country)[0]
     return usrprofile
+
+# Creating a request in the database
 def create_request(requester,category,product_name,product_brand,product_quantity,description):
 	rqst = Request.objects.get_or_create(requester=requester,category=category,product_name=product_name,product_brand=product_brand,product_quantity=product_quantity,description=description)[0]
 	return rqst
@@ -40,6 +45,10 @@ def create_request(requester,category,product_name,product_brand,product_quantit
 
 if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'productfinder.settings')
+    print "Importing User model"
     from django.contrib.auth.models import User
+    print "Importing Request, Category and Profile model"
     from product_finder.models import Request,UserProfile,Category
+    print "Populating models..."
     dataImport()
+    print "Done!"
