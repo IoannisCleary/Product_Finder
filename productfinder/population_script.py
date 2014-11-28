@@ -6,7 +6,7 @@ def populate():
 	entertainment = add_category (type = "Home and Entertainment",icon="icon-headphones",image="random_grey_variations.png")
 	pet = add_category (type = "Pets",icon="icon-leaf",image="pool_table.png")
 	other = add_category (type = "Other",icon="icon-certificate",image="washi.png")
-	
+	admin = add_requester(username = "Administrator",name = "Leader",phone = 999666,city = "Unknown city", country = "Unknown country")
 	user1 = add_requester(username = "BilboLOTR69",name = "Regina George",phone = 123456,city = "Glasgow", country = "United Kingdom")
 	luckycharms = add_request(requester = user1, category = food, product_name = "Lucky Charms", product_brand = "General Mills", product_quantity = 2,description="Corn flakes")
 	cola = add_request(requester = user1, category = food, product_name = "Cherry cola", product_brand = "Coca cola", product_quantity = 6,description="Soft drink")
